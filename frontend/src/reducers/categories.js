@@ -1,6 +1,6 @@
 import {
-    GET_POSTS_FROM_CATEGORIES,
-    GET_CATEGORIES
+    GET_CATEGORIES,
+    GET_POSTS_FROM_CATEGORIES
 } from '../actions';
 
 const initialState = [];
@@ -17,6 +17,7 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 posts: action.posts
             };
+            
         default:
             return state;
     }

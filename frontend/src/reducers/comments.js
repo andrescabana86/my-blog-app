@@ -1,25 +1,24 @@
 import {
     ADD_COMMENT,
-    EDIT_COMMENT,
-    EDITING_COMMENT, 
-    REMOVE_COMMENT,
-    GET_COMMENTS
+    GET_COMMENTS,
+    UPDATE_COMMENT,
+    DELETE_COMMENT
 } from '../actions';
 
 const initialState = [];
 const reducer = (state = initialState, action) => {
     switch (action.type) {
-    	case GET_COMMENTS:
+        case ADD_COMMENT:
+            return {
+                ...state,
+                comments: [...state.comments, action.comment]
+            };
+        case GET_COMMENTS:
             return {
                 ...state,
                 comments: action.comments
             };
-        case EDITING_COMMENT:
-            return {
-                ...state,
-                editingComment: action.comment
-            };
-        case EDIT_COMMENT:
+        case UPDATE_COMMENT:
             const commentIndex = state.comments.findIndex((comment) => action.comment.id === comment.id)
             const {comments} = state
             comments[commentIndex] = action.comment
@@ -27,18 +26,13 @@ const reducer = (state = initialState, action) => {
                 comments:
                     [...comments]
             };
-        case REMOVE_COMMENT:
+        case DELETE_COMMENT:
             const remainingComments = state.comments.filter((comment) => action.commentId !== comment.id)
-            
             return {
                 ...state,
                 comments: remainingComments
             };
-        case ADD_COMMENT:
-            return {
-                ...state,
-                comments: [...state.comments, action.comment]
-            };
+
         default:
             return state;
     }
