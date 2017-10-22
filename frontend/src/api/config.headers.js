@@ -1,0 +1,6 @@
+export const rootUrl = 'http://localhost:3001'
+export const headers = {
+	'Accept': 'application/json',
+	'Content-Type': 'application/json',
+	'Authorization': 'what-ever-i-want-for-auth-me',
+}
