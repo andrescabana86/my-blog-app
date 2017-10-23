@@ -1,8 +1,8 @@
-import CategoriesAPI from '../api/categories.api'
+import * as CategoriesAPI from '../api/categories.api'
 import {
 	GET_CATEGORIES,
 	GET_POSTS_FROM_CATEGORIES
-} from './actions';
+} from '../actions';
 
 const getCategories =  (categories) => ({
 	type: GET_CATEGORIES,
@@ -10,7 +10,7 @@ const getCategories =  (categories) => ({
 });
 
 export const fetchCategories = () => dispatch => (
-	CategoryAPI
+	CategoriesAPI
 		.getAll()
 		.then(categories => dispatch(getCategories(categories)))    
 );
@@ -22,7 +22,7 @@ const getPostsFromCategories = (posts) => ({
 });
 
 export const fetchPostsFromCategory = (category) => dispatch => (
-	CategoryAPI
+	CategoriesAPI
 		.getPosts(category)
 		.then(posts => dispatch(getPostsFromCategories(posts)))
 );

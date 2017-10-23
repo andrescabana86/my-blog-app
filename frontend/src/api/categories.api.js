@@ -1,4 +1,4 @@
-import {rootUrl, headers} from './config.header.js';
+import {rootUrl, headers} from './config.headers.js';
 
 
 export const getAll = () =>
