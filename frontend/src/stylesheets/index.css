@@ -60,7 +60,7 @@ a.post-category:focus {
 	padding: 0;
 	list-style: none;
 	text-align: right;
-	margin: 4px 2em 0;
+	margin: 4px 2em 10px;
 }
 
 .nav-item {
