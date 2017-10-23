@@ -98,6 +98,14 @@ a.post-category:focus {
 	letter-spacing: 0.1em;
 }
 
+.sort-selector {
+	float: right;
+}
+.sort-selector select {
+	border: 0px;
+	box-shadow: none;
+}
+
 .post {
 	padding-bottom: 2em;
 }

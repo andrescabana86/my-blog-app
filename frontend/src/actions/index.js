@@ -6,6 +6,7 @@ export const ADD_POST = 'ADD_POST';
 export const GET_POST = 'GET_POST';
 export const GET_POSTS = 'GET_POSTS';
 export const UPDATE_POST = 'UPDATE_POST';
+export const SORT_POSTS = 'SORT_POSTS';
 export const DELETE_POST = 'DELETE_POST';
 // comments actions
 export const ADD_COMMENT = 'ADD_COMMENT';

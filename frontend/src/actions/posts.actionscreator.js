@@ -1,9 +1,11 @@
+import sortBy from 'sort-by';
 import * as PostsAPI from '../api/posts.api'
 import {
 	ADD_POST,
 	GET_POST,
 	GET_POSTS,
 	UPDATE_POST,
+	SORT_POSTS,
 	DELETE_POST
 } from '../actions';
 
@@ -50,6 +52,13 @@ export const updatePost = (post) => dispatch => (
 		.editPost(post)
 		.then(post => dispatch( updatePostAction(post) ))
 );
+
+export const sortPosts = (posts, sortTerm) => {
+	return {
+		type: SORT_POSTS,
+		posts: posts.sort(sortBy(sortTerm))
+	};
+};
 
 const deletePostAction = (postId) => ({
 	type: DELETE_POST,
