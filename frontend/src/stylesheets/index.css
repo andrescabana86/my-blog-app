@@ -10,6 +10,26 @@ body {
 	box-sizing: border-box;
 }
 
+a {
+    text-decoration: none;
+    color: rgb(61, 146, 201);
+    cursor: pointer;
+}
+
+a:hover,
+a:focus {
+    text-decoration: none;
+}
+
+a.post-category {
+	text-transform: uppercase;
+}
+
+a.post-category:hover,
+a.post-category:focus {
+    cursor: auto;
+}
+
 .header {
 	text-align: center;
 	top: auto;

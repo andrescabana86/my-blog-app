@@ -5,7 +5,7 @@ const Post = ({post}) => (
 		<header className="post-header">
 			<h2 className="post-title">{ post.title }</h2>
 			<p className="post-meta">
-				By <a className="post-author">{ post.author } </a> 
+				By <a className="post-author" href='#'>{ post.author } </a> 
 				under <a className="post-category">{ post.category }</a>
 			</p>
 		</header>
