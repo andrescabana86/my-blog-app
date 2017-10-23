@@ -6,7 +6,8 @@ const Post = ({post}) => (
 			<h2 className="post-title">{ post.title }</h2>
 			<p className="post-meta">
 				By <a className="post-author" href='#'>{ post.author } </a> 
-				under <a className="post-category">{ post.category }</a>
+				under <a className="post-category">{ post.category }</a> 
+				-> {post.commentCount} Comment/s
 			</p>
 		</header>
 		<article className="post-description">

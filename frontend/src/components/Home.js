@@ -10,16 +10,18 @@ class Home extends Component {
 		this.props.dispatch(PostsActions.getPosts());
 	}
 
-	componentWillUpdate (nextProps, nextState) {
-
-	}
-
 	render () {
 
-		const { posts, match } = this.props;
+		let { posts, match } = this.props;
 		const category = (match && match.params)
 			? match.params.path 
 			: null;
+
+		if (category) {
+			posts = posts.filter((post) => {
+				return post.category === category;
+			})
+		}
 
 		return (
 			<div className="content pure-u-1 pure-u-md-3-4">
@@ -28,11 +30,12 @@ class Home extends Component {
 				</h1>
 				{
 					Array.isArray(posts) && posts.length > 0 
-					&& posts
+					? posts
 						.filter((post) => !post.deleted)
 						.map((post, index) => (
 							<Post key={index} post={post} /> 
 						))
+					: <small>No posts... :(</small>
 				}
 			</div>
 		);
