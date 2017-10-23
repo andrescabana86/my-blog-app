@@ -1,11 +1,11 @@
-import CategoriesAPI from '../api/categories.api'
+import * as PostsAPI from '../api/posts.api'
 import {
 	ADD_POST,
 	GET_POST,
 	GET_POSTS,
 	UPDATE_POST,
 	DELETE_POST
-} from './actions';
+} from '../actions';
 
 const addPostAction = (post) => ({
 	type: ADD_POST,
@@ -13,9 +13,9 @@ const addPostAction = (post) => ({
 });
 
 export const addPost = (post) => dispatch => (
-	PostAPI
+	PostsAPI
 		.addPost(post)
-		.then(post => dispatch( addPostAction(post) ));
+		.then(post => dispatch( addPostAction(post) ))
 );
 
 const getPostAction = (post) => ({
@@ -24,9 +24,9 @@ const getPostAction = (post) => ({
 });
 
 export const getPost = (postId) => dispatch => (
-	PostAPI
+	PostsAPI
 		.getPost(postId)
-		.then(post => dispatch( getPostAction(post) ));
+		.then(post => dispatch( getPostAction(post) ))
 );
 
 const getPostsAction = (posts) => ({
@@ -35,20 +35,20 @@ const getPostsAction = (posts) => ({
 });
 
 export const getPosts = () => dispatch => (
-	PostAPI
+	PostsAPI
 		.getAll()
-		.then(posts => dispatch( getPostsAction(posts) ));
+		.then(posts => dispatch( getPostsAction(posts) ))
 );
 
 const updatePostAction = (post) => ({
-	type: EDIT_POST,
+	type: UPDATE_POST,
 	post
 });
 
 export const updatePost = (post) => dispatch => (
-	PostAPI
+	PostsAPI
 		.editPost(post)
-		.then(post => dispatch( updatePostAction(post) ));
+		.then(post => dispatch( updatePostAction(post) ))
 );
 
 const deletePostAction = (postId) => ({
@@ -56,20 +56,20 @@ const deletePostAction = (postId) => ({
 	postId
 });
 
-export const deletePost = (postId) => dispatch => {
-	PostAPI
+export const deletePost = (postId) => dispatch => (
+	PostsAPI
 		.deletePost(postId)
-		.then( () => dispatch( deletePostAction(postId) ));
-}
+		.then( () => dispatch( deletePostAction(postId) ))
+);
 
 export const votePostUp = (id) => dispatch => (
-	PostAPI
+	PostsAPI
 		.upVote(id)
-		.then(post => dispatch( updatePostAction(post) ));
+		.then(post => dispatch( updatePostAction(post) ))
 );
 
 export const votePostDown = (postId) => dispatch => (
-	PostAPI
+	PostsAPI
 		.downVote(postId)
-		.then(post => dispatch( updatePostAction(post) ));
+		.then(post => dispatch( updatePostAction(post) ))
 );

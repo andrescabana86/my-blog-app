@@ -21,19 +21,22 @@ class SideBarMenu extends Component {
 				</header>
 				<nav className="nav">
 					<ul className="nav-list">
+						<li className="nav-item" key={'0'} >
+							<NavLink to={'/'} className="pure-button" >
+								ALL
+								<FaChevronRight />
+							</NavLink>
+						</li>
 						{
 							Array.isArray(categories) 
 							&& categories.map( ({name, path}) => (
-									<li className="nav-item">
-										<NavLink key={path} 
-											to={`/category/${path}`} 
-											onClick={this.toggleMenu} 
-											className="pure-button" >
-											{name}
-											<FaChevronRight />
-										</NavLink>
-									</li>
-								))
+								<li className="nav-item" key={path} >
+									<NavLink to={`/category/${path}`} className="pure-button" >
+										{name}
+										<FaChevronRight />
+									</NavLink>
+								</li>
+							))
 						}
 					</ul>
 				</nav>

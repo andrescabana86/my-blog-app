@@ -6,7 +6,7 @@ import {
     DELETE_POST
 } from '../actions';
 
-const initialState = {};
+const initialState = [];
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_POST:
@@ -20,10 +20,7 @@ const reducer = (state = initialState, action) => {
                 posts: [action.post]
             };
         case GET_POSTS:
-            return {
-                ...state,
-                posts: action.posts
-            };
+            return action.posts;
         case UPDATE_POST:
             const postIndex = state.posts.findIndex((post) => action.post.id === post.id)
             const {posts} = state
