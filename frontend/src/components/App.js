@@ -6,6 +6,7 @@ import '../../node_modules/purecss/build/grids-responsive-min.css';
 // components
 import SideBarMenu from './SideBarMenu';
 import Home from './Home';
+import CreatePost from './CreatePost';
 
 
 class App extends Component {
@@ -15,8 +16,11 @@ class App extends Component {
 				<Route path='/' render={ ({history}) => (
 					<div className="home pure-g">
 						<SideBarMenu />
+						{/* Home Routes */}
 						<Route exact path='/' component={Home} />
-              			<Route exact path='/category/:path' component={Home} />
+						<Route exact path='/category/:path' component={Home} />
+						{/* Post Routes */}
+						<Route exact path='/createPost' history={history} component={CreatePost} />
 					</div>
 				)} />
 			</BrowserRouter>

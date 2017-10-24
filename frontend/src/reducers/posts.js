@@ -12,7 +12,8 @@ const reducer = (state = initialState, action) => {
     switch (action.type) {
         
         case ADD_POST:
-            return [...state.posts, action.post];
+            debugger;
+            return [...state, action.post];
         
         case GET_POST:
             return [...action.posts];
@@ -21,15 +22,15 @@ const reducer = (state = initialState, action) => {
             return [...action.posts];
         
         case UPDATE_POST:
-            const postIndex = state.posts.findIndex((post) => action.post.id === post.id);
-            state.posts[postIndex] = action.post;
-            return [...state.posts];
+            const postIndex = state.findIndex((post) => action.post.id === post.id);
+            state[postIndex] = action.post;
+            return [...state];
         
         case SORT_POSTS:
             return [...action.posts];
         
         case DELETE_POST:
-            const remainingPosts = state.posts.filter((post) => action.postId !== post.id);
+            const remainingPosts = state.filter((post) => action.postId !== post.id);
             return [...remainingPosts];
             
         default:

@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import * as PostsActions from '../actions/posts.actionscreator';
 import FaIconPlus from 'react-icons/lib/fa/plus';
 import Post from './Post';
 
 class Home extends Component {
 
+
 	componentDidMount () {
 		this.props.dispatch(PostsActions.getPosts());
 	}
-
+	
 	sortBy = (evt, posts) => {
 		const sorting = evt.target.value;
 		this.props.dispatch(PostsActions.sortPosts(posts, sorting));
@@ -52,10 +54,11 @@ class Home extends Component {
 						))
 					: <small>No posts... :(</small>
 				}
-				<button className='pure-button floating-action-button' 
-					title='+ Add Post'>
+				<Link to='/createPost'
+					className='pure-button floating-action-button'
+					title='+ New Post'>
 					<FaIconPlus />
-				</button>
+				</Link>
 			</div>
 		);
 	}

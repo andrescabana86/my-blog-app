@@ -30,6 +30,31 @@ a.post-category:focus {
     cursor: auto;
 }
 
+.button-success,
+.button-error {
+    color: white;
+    border-radius: 4px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+.button-success {
+	background: rgb(28, 184, 65); /* this is a green */
+}
+
+.button-error {
+	background: rgb(202, 60, 60); /* this is a maroon */
+}
+
+.pull-right {
+	float: right;
+}
+
+.input-group {
+	margin: 0px;
+	margin-top: 4px;
+	margin-bottom: 20px;
+	padding: 0px;
+}
+
 .header {
 	text-align: center;
 	top: auto;
@@ -148,6 +173,7 @@ a.post-category:focus {
 	border-radius:50px;
 	text-align:center;
 	box-shadow: 2px 2px 3px #999;
+	padding: .9em 1em;
 }
 
 @media (min-width: 48em) {
