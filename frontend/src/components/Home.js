@@ -35,7 +35,7 @@ class Home extends Component {
 						<label htmlFor='sort-select'>Sort by:</label>
 						<select id='sort-select' 
 							onChange={ (e) => this.sortBy(e, posts) } >
-							<option selected value="-voteScore">Most Popular</option>
+							<option defaultValue value="-voteScore">Most Popular</option>
 							<option value="voteScore">Least Popular</option>
 							<option value="-timestamp">Most Recent</option>
 							<option value="timestamp">Least Recent</option>
