@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import * as CategoriesActions from '../actions/categories.actionscreator';
 import * as PostsActions from '../actions/posts.actionscreator';
 import Post from './Post';
 
@@ -27,7 +26,7 @@ class Home extends Component {
 				return post.category === category;
 			})
 		}
-		debugger;
+
 		return (
 			<div className="content pure-u-1 pure-u-md-3-4">
 				<h1 className="content-subhead">
@@ -36,10 +35,10 @@ class Home extends Component {
 						<label htmlFor='sort-select'>Sort by:</label>
 						<select id='sort-select' 
 							onChange={ (e) => this.sortBy(e, posts) } >
+							<option selected value="-voteScore">Most Popular</option>
+							<option value="voteScore">Least Popular</option>
 							<option value="-timestamp">Most Recent</option>
 							<option value="timestamp">Least Recent</option>
-							<option value="-voteScore">Most Popular</option>
-							<option value="voteScore">Least Popular</option>
 						</select>
 					</form>
 				</h1>
