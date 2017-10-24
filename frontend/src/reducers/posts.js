@@ -12,7 +12,6 @@ const reducer = (state = initialState, action) => {
     switch (action.type) {
         
         case ADD_POST:
-            debugger;
             return [...state, action.post];
         
         case GET_POST:
