@@ -17,7 +17,7 @@ class SideBarMenu extends Component {
 				<header className="header">
 					<small>@andrescabana86</small>
 					<h1 className="brand-title">My Blog App</h1>
-					<h1 className="brand-tagline">Categorías</h1>
+					<h1 className="brand-tagline">Categories</h1>
 				</header>
 				<nav className="nav">
 					<ul className="nav-list">
