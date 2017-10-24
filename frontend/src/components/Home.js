@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as PostsActions from '../actions/posts.actionscreator';
+import FaIconPlus from 'react-icons/lib/fa/plus';
 import Post from './Post';
 
 class Home extends Component {
@@ -51,6 +52,10 @@ class Home extends Component {
 						))
 					: <small>No posts... :(</small>
 				}
+				<button className='pure-button floating-action-button' 
+					title='+ Add Post'>
+					<FaIconPlus />
+				</button>
 			</div>
 		);
 	}
