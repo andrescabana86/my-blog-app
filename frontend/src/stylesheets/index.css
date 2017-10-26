@@ -44,6 +44,10 @@ a.post-category:focus {
 	background: rgb(202, 60, 60); /* this is a maroon */
 }
 
+.button-xsmall {
+	font-size: 70%;
+}
+
 .pull-right {
 	float: right;
 }
@@ -200,6 +204,14 @@ a.post-category:focus {
 
 .comment-body p {
 	margin: 8px 0px;
+}
+
+.toolbar,
+.toolbar * {
+	display: inline-block;
+}
+.toolbar .vote-score {
+	margin: 0px 10px;
 }
 
 @media (min-width: 48em) {

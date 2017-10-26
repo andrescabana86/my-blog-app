@@ -50,7 +50,7 @@ class Home extends Component {
 					? posts
 						.filter((post) => !post.deleted)
 						.map((post, index) => (
-							<Post key={index} post={post} /> 
+							<Post key={index} post={post} dispatch={this.props.dispatch} /> 
 						))
 					: <small>No posts... :(</small>
 				}

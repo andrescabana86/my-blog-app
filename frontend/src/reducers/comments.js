@@ -2,8 +2,7 @@ import {
     ADD_COMMENT,
     GET_COMMENTS,
     UPDATE_COMMENT,
-    DELETE_COMMENT,
-    CLEAN_COMMENTS
+    DELETE_COMMENT
 } from '../actions';
 
 const initialState = [];

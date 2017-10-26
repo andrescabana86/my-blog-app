@@ -4,8 +4,7 @@ import {
     GET_POSTS,
     UPDATE_POST, 
     SORT_POSTS, 
-    DELETE_POST,
-    CLEAN_POST
+    DELETE_POST
 } from '../actions';
 
 const initialState = [];

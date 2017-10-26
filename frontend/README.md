@@ -10,7 +10,7 @@ The readable blog app is a project based on create-react-app template. The goal 
 npm install
 ```
 
-## Development
+## Start
 
 ```
 npm start

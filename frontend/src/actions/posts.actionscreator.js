@@ -71,13 +71,13 @@ export const deletePost = (postId) => dispatch => (
 		.then( () => dispatch( deletePostAction(postId) ))
 );
 
-export const votePostUp = (id) => dispatch => (
+export const voteUp = (postId) => dispatch => (
 	PostsAPI
-		.upVote(id)
+		.upVote(postId)
 		.then(post => dispatch( updatePostAction(post) ))
 );
 
-export const votePostDown = (postId) => dispatch => (
+export const voteDown = (postId) => dispatch => (
 	PostsAPI
 		.downVote(postId)
 		.then(post => dispatch( updatePostAction(post) ))

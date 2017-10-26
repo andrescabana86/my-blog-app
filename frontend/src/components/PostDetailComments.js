@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import * as CommentsAPI from '../api/comments.api';
 import Comment from './Comment';
 
