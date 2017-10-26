@@ -1,10 +1,10 @@
-import CategoriesAPI from '../api/categories.api'
+import * as CommentsAPI from '../api/comments.api'
 import {
 	ADD_COMMENT,
 	GET_COMMENTS,
 	UPDATE_COMMENT,
 	DELETE_COMMENT
-} from './actions';
+} from '../actions';
 
 const addCommentAction = (comment) => ({
 	type: ADD_COMMENT,
@@ -12,9 +12,9 @@ const addCommentAction = (comment) => ({
 });
 
 export const addComment = (comment) => dispatch => (
-	CommentAPI
+	CommentsAPI
 		.addComment(comment)
-		.then(comment => dispatch( addCommentAction(comment) ));
+		.then(comment => dispatch( addCommentAction(comment) ))
 );
 
 const getCommentsAction = (comments) => ({
@@ -23,9 +23,9 @@ const getCommentsAction = (comments) => ({
 });
 
 export const getComments = (postId) => dispatch => (
-	CommentAPI
+	CommentsAPI
 		.getComments(postId)
-		.then(comments => dispatch( getCommentsAction(comments) ));
+		.then(comments => dispatch( getCommentsAction(comments) ))
 );
 
 const updateCommentAction = (comment) => ({
@@ -34,9 +34,9 @@ const updateCommentAction = (comment) => ({
 });
 
 export const udpdateComment = (comment) => dispatch => (
-	CommentAPI
+	CommentsAPI
 		.editComment(comment)
-		.then(comment => dispatch( updateCommentAction(comment) ));
+		.then(comment => dispatch( updateCommentAction(comment) ))
 );
 
 const deleteCommentAction = (commentId) => ({
@@ -44,20 +44,20 @@ const deleteCommentAction = (commentId) => ({
 	commentId
 });
 
-export const deleteComment = (commentId) => dispatch => {
-	CommentAPI
+export const deleteComment = (commentId) => dispatch => (
+	CommentsAPI
 		.deleteComment(commentId)
-		.then(() => dispatch( deleteCommentAction(commentId) ));
-}
+		.then(() => dispatch( deleteCommentAction(commentId) ))
+);
 
 export const voteCommentUp = (id) =>  dispatch => (    
-	CommentAPI
+	CommentsAPI
 		.upVote(id)
-		.then(comment => dispatch( updateCommentAction(comment) ));
+		.then(comment => dispatch( updateCommentAction(comment) ))
 );
 
 export const voteCommentDown = (commentId) => dispatch => (
-	CommentAPI
+	CommentsAPI
 		.downVote(commentId)
-		.then(comment => dispatch( updateCommentAction(comment) ));
+		.then(comment => dispatch( updateCommentAction(comment) ))
 );

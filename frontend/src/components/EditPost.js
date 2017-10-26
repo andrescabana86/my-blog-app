@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import uuid from 'uuid/v4';
 import * as PostsActions from '../actions/posts.actionscreator';
 import CreateOrEditPost from './CreateOrEditPost';
 
 class CreatePost extends Component {
+
 	state = {
-		id: uuid(),
+		id: '',
 		title: '',
 		body: '',
 		author: '',
@@ -16,9 +16,13 @@ class CreatePost extends Component {
 		timestamp: Date.now()
 	}
 
+	componentDidMount () {
+		this.props.dispatch(PostsActions.getPost(this.props.postId));
+	}
+
 	submit = (e) => {
 		e.preventDefault();
-		this.props.dispatch(PostsActions.addPost(this.state));
+		this.props.dispatch(PostsActions.updatePost(this.state));
 		this.props.history.push('/');
 	}
 

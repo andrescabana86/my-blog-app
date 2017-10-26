@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Post = ({post}) => (
 	<section className="post">
@@ -13,6 +14,7 @@ const Post = ({post}) => (
 		<article className="post-description">
 			<p>{ post.body }</p>
 		</article>
+		<Link to={`/post/${post.id}`}><small>View Post</small></Link>
 	</section>
 );
 
