@@ -27,7 +27,7 @@ const Post = (props) => {
 				<p>{ props.post.body }</p>
 			</article>
 			<ToolBar post={props.post} voteUp={voteUp} voteDown={voteDown} />
-			<Link to={`/post/${props.post.id}`}><small>View Post</small></Link>
+			<Link to={`/${props.post.category}/${props.post.id}`}><small>View Post</small></Link>
 		</section>
 	);
 	
