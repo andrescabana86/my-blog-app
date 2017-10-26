@@ -1,4 +1,4 @@
-import * as CommentsAPI from '../api/comments.api'
+import * as CommentsAPI from '../api/comments.api';
 import {
 	ADD_COMMENT,
 	GET_COMMENTS,

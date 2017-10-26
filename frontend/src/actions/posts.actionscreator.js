@@ -1,5 +1,5 @@
 import sortBy from 'sort-by';
-import * as PostsAPI from '../api/posts.api'
+import * as PostsAPI from '../api/posts.api';
 import {
 	ADD_POST,
 	GET_POST,

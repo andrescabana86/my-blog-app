@@ -1,25 +1,32 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import * as PostsActions from '../actions/posts.actionscreator';
+import * as PostsAPI from '../api/posts.api';
 import PostDetailComments from './PostDetailComments';
 
 class PostDetail extends Component {
 
+	state = {
+		post: null
+	}
+
 	componentDidMount () {
+		
 		let { match } = this.props;
 		const postId = (match && match.params)
 			? match.params.postId 
 			: null;
+
 		if (postId) {
-			this.props.dispatch(PostsActions.getPost(postId));
+			PostsAPI.getPost(postId)
+			.then((post) => {
+				this.setState({post});
+			});
 		}
 	}
 
 	render () {
-		
-		const post = this.props.posts.length > 1
-			? null
-			: this.props.posts[0];
+
+		const post = this.state.post;
 
 		if (!post) {
 			return (
@@ -50,9 +57,5 @@ class PostDetail extends Component {
 	}
 
 }
-
-const mapStateToProps = (state, props) => ({
-	posts: state.posts
-});
   
-export default connect(mapStateToProps)(PostDetail);
+export default PostDetail;

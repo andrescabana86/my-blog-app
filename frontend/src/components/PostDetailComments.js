@@ -1,19 +1,28 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import * as CommentsActions from '../actions/comments.actionscreator';
+import * as CommentsAPI from '../api/comments.api';
 import Comment from './Comment';
 
 class PostDetailComments extends Component {
 
+	state = {
+		comments: null
+	}
+
 	componentDidMount () {
 		let { post } = this.props;
 		if (post.commentCount) {
-			this.props.dispatch(CommentsActions.getComments(post.id));
+			CommentsAPI.getComments(post.id)
+			.then((comments) => {
+				this.setState({comments});
+			})
 		}
 	}
 
 	render () {
-		const comments = this.props.comments;
+		
+		const comments = this.state.comments;
+		
 		return (
 			<div className="post-comments">
 				<legend>Comments:</legend>
@@ -32,8 +41,4 @@ class PostDetailComments extends Component {
 
 }
 
-const mapStateToProps = (state, props) => ({
-	comments: state.comments
-});
-  
-export default connect(mapStateToProps)(PostDetailComments);
+export default PostDetailComments;
