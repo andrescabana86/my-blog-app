@@ -206,6 +206,10 @@ a.post-category:focus {
 	margin: 8px 0px;
 }
 
+.toolbar {
+	margin-bottom: 10px;
+}
+
 .toolbar,
 .toolbar * {
 	display: inline-block;

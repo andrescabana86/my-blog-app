@@ -24,7 +24,7 @@ class PostDetailComments extends Component {
 		
 		return (
 			<div className="post-comments">
-				<legend>Comments:</legend>
+				<legend>{comments && comments.length} Comment/s:</legend>
 				{
 					(Array.isArray(comments) && comments.length > 0) 
 						? comments
