@@ -3,7 +3,9 @@ import { Link } from 'react-router-dom';
 
 const CreateOrEditPost = (props) => (
 	<div className="content pure-u-1 pure-u-md-3-4">
-		<h1 className="content-subhead">Create a new Post:</h1>
+		<h1 className="content-subhead">
+			{ (!props.edit) ? 'Create a new Post:' : 'Edit Post:' }
+		</h1>
 		<form className='pure-form pure-form-stacked'
 			onSubmit={props.onSubmit}
 			onChange={props.onChange}>
@@ -16,7 +18,7 @@ const CreateOrEditPost = (props) => (
 							type="text" 
 							placeholder="It's 1 am and creativity is running out" 
 							required 
-							value={props.title}
+							value={props.post.title}
 							name="title" />
 					</div>
 					<div className="input-group pure-u-1">
@@ -26,7 +28,7 @@ const CreateOrEditPost = (props) => (
 							name="body"
 							placeholder="This is my awesome blog post! Behold my knowledge and wit." 
 							required 
-							value={props.body}
+							value={props.post.body}
 							style={{"resize":"none"}}></textarea>
 					</div>
 					<div className="input-group pure-u-1 pure-u-md-1-2">
@@ -35,7 +37,7 @@ const CreateOrEditPost = (props) => (
 							type="text" 
 							name="author"
 							required 
-							value={props.author}
+							value={props.post.author}
 							placeholder="Bruce Wayne" 
 							className='pure-u-1 pure-u-md-23-24' />
 					</div>
@@ -44,7 +46,7 @@ const CreateOrEditPost = (props) => (
 						<select id='post-category'
 							name="category"
 							className='pure-u-1'
-							value={props.category} >
+							value={props.post.category} >
 							{
 								Array.isArray(props.categories) 
 								&& props.categories.map(({name, path}) => (
@@ -61,7 +63,7 @@ const CreateOrEditPost = (props) => (
 						</Link>
 						<button type='submit'
 							className="button-success pure-button pull-right pure-u-1-2 pure-u-md-4-24">
-							Create
+							{ (!props.edit) ? 'Create' : 'Save' }
 						</button>
 					</div>
 				</div>

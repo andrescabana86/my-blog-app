@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import * as PostsAPI from '../api/posts.api';
 import * as PostsActions from '../actions/posts.actionscreator';
 import CreateOrEditPost from './CreateOrEditPost';
 
-class CreatePost extends Component {
+class EditPost extends Component {
 
 	state = {
 		id: '',
@@ -13,16 +14,27 @@ class CreatePost extends Component {
 		category: 'react',
 		voteScore: 0,
 		deleted: false,
-		timestamp: Date.now()
+		timestamp: 0
 	}
 
 	componentDidMount () {
-		this.props.dispatch(PostsActions.getPost(this.props.postId));
+
+		let { match } = this.props;
+		const postId = (match && match.params)
+			? match.params.postId 
+			: null;
+
+		if (postId) {
+			PostsAPI.getPost(postId)
+			.then((post) => {
+				this.setState({...post});
+			});
+		}
 	}
 
 	submit = (e) => {
 		e.preventDefault();
-		this.props.dispatch(PostsActions.updatePost(this.state));
+		this.props.dispatch( PostsActions.updatePost(this.state) );
 		this.props.history.push('/');
 	}
 
@@ -35,6 +47,7 @@ class CreatePost extends Component {
 	render() {
 		return (
 			<CreateOrEditPost 
+				edit={true}
 				categories={this.props.categories}
 				onSubmit={this.submit}
 				onChange={this.onChangeHandler}
@@ -47,4 +60,4 @@ const mapStateToProps = (state, props) => ({
 	categories: state.categories
 });
   
-export default connect(mapStateToProps)(CreatePost);
+export default connect(mapStateToProps)(EditPost);

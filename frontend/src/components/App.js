@@ -8,7 +8,7 @@ import SideBarMenu from './SideBarMenu';
 import Home from './Home';
 import PostDetail from './PostDetail';
 import CreatePost from './CreatePost';
-import EditPost from './CreatePost';
+import EditPost from './EditPost';
 
 
 class App extends Component {
@@ -23,8 +23,8 @@ class App extends Component {
 						<Route exact path='/:category' component={Home} />
 						{/* Post Routes */}
 						<Route exact path='/:category/:postId' history={history} component={PostDetail} />
-						<Route exact path='/createPost' history={history} component={CreatePost} />
-						<Route exact path='/editPost' history={history} component={EditPost} />
+						<Route exact path='/create/new/post' history={history} component={CreatePost} />
+						<Route exact path='/edit/post/:postId' history={history} component={EditPost} />
 					</div>
 				)} />
 			</BrowserRouter>

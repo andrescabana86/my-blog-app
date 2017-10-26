@@ -5,6 +5,10 @@ import ToolBar from './ToolBar';
 
 const Post = (props) => {
 
+	const deletePost = () => {
+		props.dispatch( PostsActions.deletePost(props.post.id) )
+	}
+
 	const voteUp = () => {
 		props.dispatch( PostsActions.voteUp(props.post.id) )
 	}
@@ -26,7 +30,10 @@ const Post = (props) => {
 			<article className="post-description">
 				<p>{ props.post.body }</p>
 			</article>
-			<ToolBar post={props.post} voteUp={voteUp} voteDown={voteDown} />
+			<ToolBar post={props.post} 
+				delete={deletePost}
+				voteUp={voteUp} 
+				voteDown={voteDown} />
 			<Link to={`/${props.post.category}/${props.post.id}`}><small>View Post</small></Link>
 		</section>
 	);

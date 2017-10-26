@@ -54,7 +54,7 @@ class Home extends Component {
 						))
 					: <small>No posts... :(</small>
 				}
-				<Link to='/createPost'
+				<Link to='/create/new/post'
 					className='pure-button floating-action-button'
 					title='+ New Post'>
 					<FaIconPlus />
