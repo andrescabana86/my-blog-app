@@ -20,7 +20,7 @@ class App extends Component {
 						<SideBarMenu />
 						{/* Home Routes */}
 						<Route exact path='/' component={Home} />
-						<Route exact path='/category/:path' component={Home} />
+						<Route exact path='/:category' component={Home} />
 						{/* Post Routes */}
 						<Route exact path='/post/:postId' history={history} component={PostDetail} />
 						<Route exact path='/createPost' history={history} component={CreatePost} />

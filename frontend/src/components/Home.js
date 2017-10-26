@@ -21,7 +21,7 @@ class Home extends Component {
 
 		let { posts, match } = this.props;
 		const category = (match && match.params)
-			? match.params.path 
+			? match.params.category 
 			: null;
 
 		if (category) {
