@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import * as PostsAPI from '../api/posts.api';
-import * as PostsActions from '../actions/posts.actionscreator';
+import * as PostActions from '../actions/post.actionscreator';
 import CreateOrEditPost from './CreateOrEditPost';
 
 class EditPost extends Component {
@@ -25,23 +24,23 @@ class EditPost extends Component {
 			: null;
 
 		if (postId) {
-			PostsAPI.getPost(postId)
-			.then((post) => {
-				this.setState({...post});
+			this.props.dispatch( PostActions.getPost(postId) )
+			.then(() => {
+				this.setState({...this.props.post});
 			});
 		}
 	}
 
 	submit = (e) => {
 		e.preventDefault();
-		this.props.dispatch( PostsActions.updatePost(this.state) );
+		this.props.dispatch( PostActions.updatePost(this.state) );
 		this.props.history.push('/');
 	}
 
 	onChangeHandler = (e) => {
 		this.setState({
 			[e.target.name]: e.target.value
-		})
+		});
 	}
 
 	render() {
@@ -49,15 +48,16 @@ class EditPost extends Component {
 			<CreateOrEditPost 
 				edit={true}
 				categories={this.props.categories}
+				post={this.state}
 				onSubmit={this.submit}
-				onChange={this.onChangeHandler}
-				post={this.state} />
+				onChange={this.onChangeHandler} />
 		)
 	}
 }
 
 const mapStateToProps = (state, props) => ({
-	categories: state.categories
+	categories: state.categories,
+	post: state.post
 });
   
 export default connect(mapStateToProps)(EditPost);

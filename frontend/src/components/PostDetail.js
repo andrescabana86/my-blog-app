@@ -1,56 +1,43 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import * as PostsAPI from '../api/posts.api';
-import * as PostsActions from '../actions/posts.actionscreator';
+import { Route, Link } from 'react-router-dom';
+import * as PostActions from '../actions/post.actionscreator';
 import PostDetailComments from './PostDetailComments';
 import ToolBar from './ToolBar';
+import AddComment from './AddComment';
 
 class PostDetail extends Component {
 
-	state = {
-		post: null
-	}
-
 	deletePost = (postId) => {
-		this.props.dispatch( PostsActions.deletePost(postId) );
+		this.props.dispatch( PostActions.deletePost(postId) );
 		this.props.history.push('/');
 	}
 
 	voteUp = (postId) => {
-		this.props.dispatch( PostsActions.voteUp(postId) );
-		this.getPost(postId);
+		this.props.dispatch( PostActions.voteUpPost(postId) );
 	}
 
 	voteDown = (postId) => {
-		this.props.dispatch( PostsActions.voteDown(postId) );
-		this.getPost(postId);
+		this.props.dispatch( PostActions.voteDownPost(postId) );
 	}
 
 	componentDidMount () {
-		
+
 		let { match } = this.props;
 		const postId = (match && match.params)
 			? match.params.postId 
 			: null;
 
 		if (postId) {
-			this.getPost(postId);
+			this.props.dispatch( PostActions.getPost(postId) );
 		}
-	}
-
-	getPost = (postId) => {
-		PostsAPI.getPost(postId)
-		.then((post) => {
-			this.setState({post});
-		});
 	}
 
 	render () {
 
-		const post = this.state.post;
+		const { post } = this.props;
 
-		if (!post) {
+		if (!post || !post.id) {
 			return (
 				<div className="content pure-u-1 pure-u-md-3-4">
 					<h1 className="content-subhead">Loading Post...</h1>
@@ -79,12 +66,26 @@ class PostDetail extends Component {
 						delete={() => this.deletePost(post.id)}
 						voteUp={() => this.voteUp(post.id)} 
 						voteDown={() => this.voteDown(post.id)} />
-					<PostDetailComments post={post}/>
+					<PostDetailComments />
+
+					<Route exact path={`/${post.category}/${post.id}/detail`} render={() => (
+						<Link title='+ New Comment' 
+							to={`/${post.category}/${post.id}/detail/add/comment`}
+							className='add-comment-link'>
+							<small>+ Add Comment</small>
+						</Link>
+					)} />
+					<Route exact path={`/${post.category}/${post.id}/detail/add/comment`} component={AddComment}/>
+
 				</section>
 			</div>
 		);
 	}
 
 }
+
+const mapStateToProps = (state, props) => ({
+	post: state.post
+});
   
-export default connect(null)(PostDetail);
+export default connect(mapStateToProps)(PostDetail);

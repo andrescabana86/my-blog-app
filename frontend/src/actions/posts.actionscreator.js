@@ -2,9 +2,8 @@ import sortBy from 'sort-by';
 import * as PostsAPI from '../api/posts.api';
 import {
 	ADD_POST,
-	GET_POST,
 	GET_POSTS,
-	UPDATE_POST,
+	UPDATE_POSTS,
 	SORT_POSTS,
 	DELETE_POST
 } from '../actions';
@@ -20,17 +19,6 @@ export const addPost = (post) => dispatch => (
 		.then(post => dispatch( addPostAction(post) ))
 );
 
-const getPostAction = (post) => ({
-	type: GET_POST,
-	post
-});
-
-export const getPost = (postId) => dispatch => (
-	PostsAPI
-		.getPost(postId)
-		.then(post => dispatch( getPostAction(post) ))
-);
-
 const getPostsAction = (posts) => ({
 	type: GET_POSTS,
 	posts
@@ -42,15 +30,15 @@ export const getPosts = () => dispatch => (
 		.then(posts => dispatch( getPostsAction(posts) ))
 );
 
-const updatePostAction = (post) => ({
-	type: UPDATE_POST,
+const updatePostsAction = (post) => ({
+	type: UPDATE_POSTS,
 	post
 });
 
-export const updatePost = (post) => dispatch => (
+export const updatePosts = (post) => dispatch => (
 	PostsAPI
 		.editPost(post)
-		.then(post => dispatch( updatePostAction(post) ))
+		.then(post => dispatch( updatePostsAction(post) ))
 );
 
 export const sortPosts = (posts, sortTerm) => {
@@ -71,14 +59,14 @@ export const deletePost = (postId) => dispatch => (
 		.then( () => dispatch( deletePostAction(postId) ))
 );
 
-export const voteUp = (postId) => dispatch => (
+export const voteUpPost = (postId) => dispatch => (
 	PostsAPI
 		.upVote(postId)
-		.then(post => dispatch( updatePostAction(post) ))
+		.then(post => dispatch( updatePostsAction(post) ))
 );
 
-export const voteDown = (postId) => dispatch => (
+export const voteDownPost = (postId) => dispatch => (
 	PostsAPI
 		.downVote(postId)
-		.then(post => dispatch( updatePostAction(post) ))
+		.then(post => dispatch( updatePostsAction(post) ))
 );

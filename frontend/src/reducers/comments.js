@@ -5,15 +5,21 @@ import {
     DELETE_COMMENT
 } from '../actions';
 
-const initialState = [];
+const initialState = {};
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         
         case ADD_COMMENT:
-            return [...state, action.comment];
+            return {
+                ...state,
+                [action.postId]: [...state[action.postId], action.comments]
+            };
         
         case GET_COMMENTS:
-            return [...action.comments];
+            return {
+                ...state,
+                [action.postId]: action.comments
+            };
         
         case UPDATE_COMMENT:
             const commentIndex = state.findIndex((comment) => action.comment.id === comment.id);

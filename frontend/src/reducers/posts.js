@@ -1,9 +1,8 @@
 import {
     ADD_POST, 
-    GET_POST,
     GET_POSTS,
-    UPDATE_POST, 
-    SORT_POSTS, 
+    SORT_POSTS,
+    UPDATE_POSTS, 
     DELETE_POST
 } from '../actions';
 
@@ -14,19 +13,16 @@ const reducer = (state = initialState, action) => {
         case ADD_POST:
             return [...state, action.post];
         
-        case GET_POST:
-            return [action.post];
-        
         case GET_POSTS:
             return [...action.posts];
         
-        case UPDATE_POST:
+        case SORT_POSTS:
+            return [...action.posts];
+
+        case UPDATE_POSTS:
             const postIndex = state.findIndex((post) => action.post.id === post.id);
             state[postIndex] = action.post;
             return [...state];
-        
-        case SORT_POSTS:
-            return [...action.posts];
         
         case DELETE_POST:
             const remainingPosts = state.filter((post) => action.postId !== post.id);

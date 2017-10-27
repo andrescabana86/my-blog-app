@@ -22,7 +22,7 @@ class App extends Component {
 						<Route exact path='/' component={Home} />
 						<Route exact path='/:category' component={Home} />
 						{/* Post Routes */}
-						<Route exact path='/:category/:postId' history={history} component={PostDetail} />
+						<Route path='/:category/:postId/detail' history={history} component={PostDetail} />
 						<Route exact path='/create/new/post' history={history} component={CreatePost} />
 						<Route exact path='/edit/post/:postId' history={history} component={EditPost} />
 					</div>

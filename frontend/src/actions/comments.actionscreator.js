@@ -17,15 +17,16 @@ export const addComment = (comment) => dispatch => (
 		.then(comment => dispatch( addCommentAction(comment) ))
 );
 
-const getCommentsAction = (comments) => ({
+const getCommentsAction = (comments, postId) => ({
 	type: GET_COMMENTS,
 	comments,
+	postId
 });
 
 export const getComments = (postId) => dispatch => (
 	CommentsAPI
 		.getComments(postId)
-		.then(comments => dispatch( getCommentsAction(comments) ))
+		.then(comments => dispatch( getCommentsAction(comments, postId) ))
 );
 
 const updateCommentAction = (comment) => ({
@@ -33,7 +34,7 @@ const updateCommentAction = (comment) => ({
 	comment
 });
 
-export const udpdateComment = (comment) => dispatch => (
+export const updateComment = (comment) => dispatch => (
 	CommentsAPI
 		.editComment(comment)
 		.then(comment => dispatch( updateCommentAction(comment) ))
@@ -50,13 +51,13 @@ export const deleteComment = (commentId) => dispatch => (
 		.then(() => dispatch( deleteCommentAction(commentId) ))
 );
 
-export const voteCommentUp = (id) =>  dispatch => (    
+export const voteUpComment = (id) =>  dispatch => (    
 	CommentsAPI
 		.upVote(id)
 		.then(comment => dispatch( updateCommentAction(comment) ))
 );
 
-export const voteCommentDown = (commentId) => dispatch => (
+export const voteDownComment = (commentId) => dispatch => (
 	CommentsAPI
 		.downVote(commentId)
 		.then(comment => dispatch( updateCommentAction(comment) ))

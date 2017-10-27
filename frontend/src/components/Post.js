@@ -10,11 +10,11 @@ const Post = (props) => {
 	}
 
 	const voteUp = () => {
-		props.dispatch( PostsActions.voteUp(props.post.id) )
+		props.dispatch( PostsActions.voteUpPost(props.post.id) )
 	}
 
 	const voteDown = () => {
-		props.dispatch( PostsActions.voteDown(props.post.id) )
+		props.dispatch( PostsActions.voteDownPost(props.post.id) )
 	}
 
 	return (
@@ -34,7 +34,7 @@ const Post = (props) => {
 				delete={deletePost}
 				voteUp={voteUp} 
 				voteDown={voteDown} />
-			<Link to={`/${props.post.category}/${props.post.id}`}><small>View Post</small></Link>
+			<Link to={`/${props.post.category}/${props.post.id}/detail`}><small>View Post</small></Link>
 		</section>
 	);
 	

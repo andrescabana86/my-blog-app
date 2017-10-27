@@ -1,5 +1,6 @@
 import React from 'react';
 import Moment from 'react-moment';
+import { Link } from 'react-router-dom';
 
 const Comment = ({comment}) => (
 	<section className="comment">
@@ -12,6 +13,8 @@ const Comment = ({comment}) => (
 		<article className="comment-body">
 			<p>{comment.body}</p>
 		</article>
+		<Link to={'/'} className='comment-edit'>Edit</Link>
+		<Link to={'/'} className='comment-error'>Remove</Link>
 	</section>
 );
 

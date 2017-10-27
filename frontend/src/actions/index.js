@@ -1,11 +1,11 @@
 // categories actions
 export const GET_CATEGORIES = 'GET_CATEGORIES';
-export const GET_POSTS_FROM_CATEGORIES = 'GET_POSTS_FROM_CATEGORIES';
-// posts actions
+// post & posts actions
 export const ADD_POST = 'ADD_POST';
 export const GET_POST = 'GET_POST';
 export const GET_POSTS = 'GET_POSTS';
 export const UPDATE_POST = 'UPDATE_POST';
+export const UPDATE_POSTS = 'UPDATE_POSTS';
 export const SORT_POSTS = 'SORT_POSTS';
 export const DELETE_POST = 'DELETE_POST';
 // comments actions

@@ -7,8 +7,7 @@ const CreateOrEditPost = (props) => (
 			{ (!props.edit) ? 'Create a new Post:' : 'Edit Post:' }
 		</h1>
 		<form className='pure-form pure-form-stacked'
-			onSubmit={props.onSubmit}
-			onChange={props.onChange}>
+			onSubmit={props.onSubmit}>
 			<fieldset>
 				<div className="pure-g">
 					<div className="input-group pure-u-1">
@@ -19,6 +18,7 @@ const CreateOrEditPost = (props) => (
 							placeholder="It's 1 am and creativity is running out" 
 							required 
 							value={props.post.title}
+							onChange={props.onChange}
 							name="title" />
 					</div>
 					<div className="input-group pure-u-1">
@@ -29,6 +29,7 @@ const CreateOrEditPost = (props) => (
 							placeholder="This is my awesome blog post! Behold my knowledge and wit." 
 							required 
 							value={props.post.body}
+							onChange={props.onChange}
 							style={{"resize":"none"}}></textarea>
 					</div>
 					<div className="input-group pure-u-1 pure-u-md-1-2">
@@ -38,6 +39,7 @@ const CreateOrEditPost = (props) => (
 							name="author"
 							required 
 							value={props.post.author}
+							onChange={props.onChange}
 							placeholder="Bruce Wayne" 
 							className='pure-u-1 pure-u-md-23-24' />
 					</div>
@@ -45,8 +47,9 @@ const CreateOrEditPost = (props) => (
 						<label htmlFor='post-category'>Category</label>
 						<select id='post-category'
 							name="category"
-							className='pure-u-1'
-							value={props.post.category} >
+							value={props.post.category}
+							onChange={props.onChange}
+							className='pure-u-1'>
 							{
 								Array.isArray(props.categories) 
 								&& props.categories.map(({name, path}) => (

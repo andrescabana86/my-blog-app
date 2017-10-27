@@ -210,6 +210,20 @@ a.post-category:focus {
 	margin: 8px 0px;
 }
 
+.comment-edit {
+	color: rgb(66, 184, 221);
+	margin-right: 4px;
+}
+
+.comment-error {
+	color: rgb(202, 60, 60);
+}
+
+.add-comment-link {
+	display: block;
+	margin-top: 10px;
+}
+
 .toolbar {
 	margin-bottom: 10px;
 }
