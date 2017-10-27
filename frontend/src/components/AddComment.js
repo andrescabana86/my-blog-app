@@ -17,6 +17,14 @@ class AddComment extends Component {
 		timestamp: Date.now()
 	}
 
+	componentDidMount () {
+		const { post } = this.props;
+		this.setState({
+			parentId: post.id,
+			parentDeleted: post.deleted
+		})
+	}
+
 	submit = (e) => {
 		e.preventDefault();
 		this.props.dispatch( CommentsActions.addComment(this.state) );
@@ -45,5 +53,9 @@ class AddComment extends Component {
 		);
 	}
 }
+
+const mapStateToProps = (state, props) => ({
+	post: state.post
+});
   
-export default connect(null)(AddComment);
+export default connect(mapStateToProps)(AddComment);

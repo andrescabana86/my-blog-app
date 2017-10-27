@@ -12,7 +12,7 @@ const reducer = (state = initialState, action) => {
         case ADD_COMMENT:
             return {
                 ...state,
-                [action.postId]: [...state[action.postId], action.comments]
+                [action.comment.parentId]: [...state[action.comment.parentId], action.comment]
             };
         
         case GET_COMMENTS:
