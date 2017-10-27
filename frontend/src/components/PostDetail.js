@@ -33,6 +33,10 @@ class PostDetail extends Component {
 		}
 	}
 
+	componentWillUnmount () {
+		this.props.dispatch( PostActions.clear() )
+	}
+
 	render () {
 
 		const { post } = this.props;

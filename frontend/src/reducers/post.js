@@ -1,7 +1,8 @@
 import { 
     GET_POST,
     UPDATE_POST,
-    DELETE_POST
+    DELETE_POST,
+    CLEAR_POST
 } from '../actions';
 
 const initialState = {};
@@ -15,6 +16,9 @@ const reducer = (state = initialState, action) => {
             return {...action.post};
         
         case DELETE_POST:
+            return {};
+
+        case CLEAR_POST:
             return {};
             
         default:

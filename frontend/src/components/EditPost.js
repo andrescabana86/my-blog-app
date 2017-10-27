@@ -31,6 +31,10 @@ class EditPost extends Component {
 		}
 	}
 
+	componentWillUnmount () {
+		this.props.dispatch( PostActions.clear() )
+	}
+
 	submit = (e) => {
 		e.preventDefault();
 		this.props.dispatch( PostActions.updatePost(this.state) );

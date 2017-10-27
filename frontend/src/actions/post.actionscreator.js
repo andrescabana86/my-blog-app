@@ -2,7 +2,8 @@ import * as PostsAPI from '../api/posts.api';
 import {
 	GET_POST,
 	UPDATE_POST,
-	DELETE_POST
+	DELETE_POST,
+	CLEAR_POST
 } from '../actions';
 
 const getPostAction = (post) => ({
@@ -49,3 +50,9 @@ export const voteDownPost = (postId) => dispatch => (
 		.downVote(postId)
 		.then(post => dispatch( updatePostAction(post) ))
 );
+
+export const clear = () => {
+	return {
+		type: CLEAR_POST
+	};
+};
