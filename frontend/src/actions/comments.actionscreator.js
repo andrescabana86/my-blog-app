@@ -40,15 +40,16 @@ export const updateComment = (comment) => dispatch => (
 		.then(comment => dispatch( updateCommentAction(comment) ))
 );
 
-const deleteCommentAction = (commentId) => ({
+const deleteCommentAction = (postId, commentId) => ({
 	type: DELETE_COMMENT,
+	postId,
 	commentId
 });
 
-export const deleteComment = (commentId) => dispatch => (
+export const deleteComment = (postId, commentId) => dispatch => (
 	CommentsAPI
 		.deleteComment(commentId)
-		.then(() => dispatch( deleteCommentAction(commentId) ))
+		.then(() => dispatch( deleteCommentAction(postId, commentId) ))
 );
 
 export const voteUpComment = (id) =>  dispatch => (    

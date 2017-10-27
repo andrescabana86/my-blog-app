@@ -27,8 +27,12 @@ const reducer = (state = initialState, action) => {
             return [...state];
         
         case DELETE_COMMENT:
-            const remainingComments = state.filter((comment) => action.commentId !== comment.id);
-            return [...remainingComments];
+            const comments = state[action.postId];
+            const remainingComments = comments.filter((comment) => action.commentId !== comment.id);
+            return {
+                ...state,
+                [action.postId]: remainingComments
+            }
         
         default:
             return state;
