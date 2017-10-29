@@ -14,7 +14,7 @@ class PostDetailComments extends Component {
 
 	render () {
 		
-		const { comments } = this.props;
+		const { post, comments } = this.props;
 
 		return (
 			<div className="post-comments">
@@ -24,7 +24,7 @@ class PostDetailComments extends Component {
 						? comments
 							.filter((comment) => !comment.deleted)
 							.map((comment, index) => (
-								<Comment key={index} comment={comment} /> 
+								<Comment key={index} post={post} comment={comment} /> 
 							))
 						: <small>No comments... :(</small>
 				}

@@ -219,6 +219,20 @@ a.post-category:focus {
 	color: rgb(202, 60, 60);
 }
 
+.comment-vote-up,
+.comment-vote-down,
+.comment-vote-score {
+	margin-left: 8px;
+}
+
+.comment-vote-up {
+	color: rgb(28, 184, 65);
+}
+
+.comment-vote-down {
+	color: rgb(202, 60, 60);
+}
+
 .add-comment-link {
 	display: block;
 	margin-top: 10px;

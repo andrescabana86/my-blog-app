@@ -8,7 +8,6 @@ import {
 const initialState = {};
 const reducer = (state = initialState, action) => {
     switch (action.type) {
-        
         case ADD_COMMENT:
             return {
                 ...state,
@@ -22,13 +21,17 @@ const reducer = (state = initialState, action) => {
             };
         
         case UPDATE_COMMENT:
-            const commentIndex = state.findIndex((comment) => action.comment.id === comment.id);
-            state[commentIndex] = action.comment;
-            return [...state];
+            let commentsToUpdate = state[action.comment.parentId];
+            let commentIndex = commentsToUpdate.findIndex((comment) => action.comment.id === comment.id);
+            commentsToUpdate[commentIndex] = action.comment;
+            return {
+                ...state,
+                [action.comment.parentId]: [...commentsToUpdate]
+            };
         
         case DELETE_COMMENT:
-            const comments = state[action.postId];
-            const remainingComments = comments.filter((comment) => action.commentId !== comment.id);
+            let commentsToDelete = state[action.postId];
+            let remainingComments = commentsToDelete.filter((comment) => action.commentId !== comment.id);
             return {
                 ...state,
                 [action.postId]: remainingComments

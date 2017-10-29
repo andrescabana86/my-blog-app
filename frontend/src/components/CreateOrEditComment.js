@@ -13,6 +13,7 @@ const CreateOrEditComment = (props) => (
 						name="author"
 						required 
 						value={props.comment.author}
+						onChange={props.onChange}
 						placeholder="Bruce Wayne" 
 						className='pure-u-1 pure-u-md-23-24' />
 				</div>
@@ -24,6 +25,7 @@ const CreateOrEditComment = (props) => (
 						placeholder="This is my awesome comment!" 
 						required 
 						value={props.comment.body}
+						onChange={props.onChange}
 						style={{"resize":"none"}}></textarea>
 				</div>
 				<div className="input-group pure-u-1">
@@ -34,7 +36,7 @@ const CreateOrEditComment = (props) => (
 					</button>
 					<button type='submit'
 						className="button-success pure-button button-xsmall pull-right pure-u-1-2 pure-u-md-4-24">
-						{ (!props.comment.edit) ? 'Comment' : 'Edit' }
+						{ (!props.edit) ? 'Comment' : 'Edit' }
 					</button>
 				</div>
 			</div>
