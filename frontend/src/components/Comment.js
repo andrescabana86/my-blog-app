@@ -16,6 +16,10 @@ class Comment extends Component {
 		let { comment } = this.props;
 		this.setState({...comment});
 	}
+
+	componentWillReceiveProps (nextProps) {
+		this.setState({...nextProps.comment});
+	}
 	
 	editComment = () => {
 		this.setState({edit: true});
