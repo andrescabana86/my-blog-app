@@ -5,6 +5,7 @@ import * as PostActions from '../actions/post.actionscreator';
 import PostDetailComments from './PostDetailComments';
 import ToolBar from './ToolBar';
 import AddComment from './AddComment';
+import NotFound from './NotFound';
 
 class PostDetail extends Component {
 
@@ -40,7 +41,9 @@ class PostDetail extends Component {
 	render () {
 
 		const { post } = this.props;
-
+		if (post.notFound) {
+			return <NotFound />;
+		}
 		if (!post || !post.id) {
 			return (
 				<div className="content pure-u-1 pure-u-md-3-4">

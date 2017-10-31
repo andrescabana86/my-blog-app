@@ -9,6 +9,7 @@ import Home from './Home';
 import PostDetail from './PostDetail';
 import CreatePost from './CreatePost';
 import EditPost from './EditPost';
+import NotFound from './NotFound';
 
 
 class App extends Component {

@@ -10,7 +10,10 @@ const reducer = (state = initialState, action) => {
     switch (action.type) {
         
         case GET_POST:
-            return {...action.post};
+            if (action.post && action.post.id) {
+                return {...action.post};
+            }
+            return {notFound: true};
         
         case UPDATE_POST:
             return {...action.post};
