@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 // pure.css stylesheets
 import 'purecss';
 import '../../node_modules/purecss/build/grids-responsive-min.css';
@@ -19,13 +19,16 @@ class App extends Component {
 				<Route path='/' render={ ({history}) => (
 					<div className="home pure-g">
 						<SideBarMenu />
-						{/* Home Routes */}
-						<Route exact path='/' component={Home} />
-						<Route exact path='/:category' component={Home} />
-						{/* Post Routes */}
-						<Route path='/:category/:postId/detail' history={history} component={PostDetail} />
-						<Route exact path='/create/new/post' history={history} component={CreatePost} />
-						<Route exact path='/edit/post/:postId' history={history} component={EditPost} />
+						<Switch>
+							{/* Home Routes */}
+							<Route exact path='/' component={Home} />
+							<Route exact path='/category/:category' component={Home} />
+							{/* Post Routes */}
+							<Route path='/:category/:postId/detail' history={history} component={PostDetail} />
+							<Route exact path='/create/new/post' history={history} component={CreatePost} />
+							<Route exact path='/edit/post/:postId' history={history} component={EditPost} />
+							<Route component={NotFound} />
+						</Switch>
 					</div>
 				)} />
 			</BrowserRouter>

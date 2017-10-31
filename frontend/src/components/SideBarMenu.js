@@ -31,7 +31,7 @@ class SideBarMenu extends Component {
 							Array.isArray(categories) 
 							&& categories.map( ({name, path}) => (
 								<li className="nav-item" key={path} >
-									<NavLink to={`/${path}`} className="pure-button" >
+									<NavLink to={`/category/${path}`} className="pure-button" >
 										{name}
 										<FaChevronRight />
 									</NavLink>
